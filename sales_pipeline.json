@@ -1,0 +1,172 @@
+"Activity name","Activity status","Error","Run start","Duration","Input","Output"
+"Copy data1","Succeeded","","4/13/2025, 8:00:22 PM","26s","{
+    ""source"": {
+        ""type"": ""DelimitedTextSource"",
+        ""storeSettings"": {
+            ""type"": ""LakehouseReadSettings"",
+            ""recursive"": true,
+            ""enablePartitionDiscovery"": false
+        },
+        ""formatSettings"": {
+            ""type"": ""DelimitedTextReadSettings""
+        },
+        ""datasetSettings"": {
+            ""annotations"": [],
+            ""linkedService"": {
+                ""name"": ""DemoLake"",
+                ""properties"": {
+                    ""annotations"": [],
+                    ""type"": ""Lakehouse"",
+                    ""typeProperties"": {
+                        ""workspaceId"": ""d5e083f9-01a0-4b3f-a56c-f6863c0382a3"",
+                        ""artifactId"": ""77ed7922-83b3-49ca-b471-405f6b55d1b5"",
+                        ""rootFolder"": ""Files""
+                    }
+                }
+            },
+            ""type"": ""DelimitedText"",
+            ""typeProperties"": {
+                ""location"": {
+                    ""type"": ""LakehouseLocation"",
+                    ""fileName"": ""sales.csv""
+                },
+                ""columnDelimiter"": "","",
+                ""escapeChar"": ""\\"",
+                ""firstRowAsHeader"": true,
+                ""quoteChar"": ""\""""
+            },
+            ""schema"": []
+        }
+    },
+    ""sink"": {
+        ""type"": ""LakehouseTableSink"",
+        ""tableActionOption"": ""Append"",
+        ""partitionOption"": ""None"",
+        ""datasetSettings"": {
+            ""annotations"": [],
+            ""linkedService"": {
+                ""name"": ""DemoLake"",
+                ""properties"": {
+                    ""annotations"": [],
+                    ""type"": ""Lakehouse"",
+                    ""typeProperties"": {
+                        ""workspaceId"": ""d5e083f9-01a0-4b3f-a56c-f6863c0382a3"",
+                        ""artifactId"": ""77ed7922-83b3-49ca-b471-405f6b55d1b5"",
+                        ""rootFolder"": ""Tables""
+                    }
+                }
+            },
+            ""type"": ""LakehouseTable"",
+            ""schema"": [],
+            ""typeProperties"": {
+                ""table"": ""Sales_Output""
+            }
+        }
+    },
+    ""enableStaging"": false,
+    ""translator"": {
+        ""type"": ""TabularTranslator"",
+        ""mappings"": [
+            {
+                ""source"": {
+                    ""name"": ""ID"",
+                    ""type"": ""String"",
+                    ""physicalType"": ""String""
+                },
+                ""sink"": {
+                    ""name"": ""ID"",
+                    ""physicalType"": ""integer""
+                }
+            },
+            {
+                ""source"": {
+                    ""name"": ""Product"",
+                    ""type"": ""String"",
+                    ""physicalType"": ""String""
+                },
+                ""sink"": {
+                    ""name"": ""Product"",
+                    ""physicalType"": ""string""
+                }
+            },
+            {
+                ""source"": {
+                    ""name"": ""Amount"",
+                    ""type"": ""String"",
+                    ""physicalType"": ""String""
+                },
+                ""sink"": {
+                    ""name"": ""Amount"",
+                    ""physicalType"": ""decimal"",
+                    ""scale"": 18,
+                    ""precision"": 38
+                }
+            }
+        ],
+        ""typeConversion"": true,
+        ""typeConversionSettings"": {
+            ""allowDataTruncation"": true,
+            ""treatBooleanAsNumber"": false
+        }
+    }
+}","{
+    ""dataRead"": 67,
+    ""dataWritten"": 1260,
+    ""filesRead"": 1,
+    ""filesWritten"": 1,
+    ""sourcePeakConnections"": 1,
+    ""sinkPeakConnections"": 1,
+    ""rowsRead"": 3,
+    ""rowsCopied"": 3,
+    ""copyDuration"": 23,
+    ""throughput"": 0.01,
+    ""errors"": [],
+    ""usedDataIntegrationUnits"": 4,
+    ""usedParallelCopies"": 1,
+    ""executionDetails"": [
+        {
+            ""source"": {
+                ""type"": ""Lakehouse""
+            },
+            ""sink"": {
+                ""type"": ""Lakehouse""
+            },
+            ""status"": ""Succeeded"",
+            ""start"": ""4/13/2025, 8:00:23 PM"",
+            ""duration"": 23,
+            ""usedDataIntegrationUnits"": 4,
+            ""usedParallelCopies"": 1,
+            ""profile"": {
+                ""queue"": {
+                    ""status"": ""Completed"",
+                    ""duration"": 7
+                },
+                ""transfer"": {
+                    ""status"": ""Completed"",
+                    ""duration"": 15,
+                    ""details"": {
+                        ""listingSource"": {
+                            ""type"": ""Lakehouse"",
+                            ""workingDuration"": 2
+                        },
+                        ""readingFromSource"": {
+                            ""type"": ""Lakehouse"",
+                            ""workingDuration"": 0
+                        },
+                        ""writingToSink"": {
+                            ""type"": ""Lakehouse"",
+                            ""workingDuration"": 0
+                        }
+                    }
+                }
+            },
+            ""detailedDurations"": {
+                ""queuingDuration"": 7,
+                ""transferDuration"": 15
+            }
+        }
+    ],
+    ""dataConsistencyVerification"": {
+        ""VerificationResult"": ""NotVerified""
+    }
+}"
